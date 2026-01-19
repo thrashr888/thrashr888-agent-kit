@@ -10,8 +10,17 @@ A Claude Code plugin marketplace with development workflows, Rust tooling, and b
 # Add marketplace via CLI
 claude plugin marketplace add thrashr888/thrashr888-agent-kit
 
-# Then inside Claude Code REPL, install specific skills
-/plugin install thrashr888-agent-kit@rust-development
+# Install individual skills
+claude plugin install style-docs@thrashr888-agent-kit
+claude plugin install github-releases@thrashr888-agent-kit
+claude plugin install makefile-patterns@thrashr888-agent-kit
+claude plugin install rust-development@thrashr888-agent-kit
+claude plugin install rust-onboard@thrashr888-agent-kit
+claude plugin install rust-release@thrashr888-agent-kit
+claude plugin install rust-best-practices@thrashr888-agent-kit
+claude plugin install python-uv@thrashr888-agent-kit
+claude plugin install hcp-terraform@thrashr888-agent-kit
+claude plugin install homebrew-tap@thrashr888-agent-kit
 ```
 
 ### Option 2: Direct configuration
