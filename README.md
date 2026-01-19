@@ -19,51 +19,99 @@ Or add to your project's `.claude/settings.local.json`:
 
 ## Skills
 
-### style-docs
+### Development Skills
+
+#### style-docs
 
 Generate standardized project documentation using the 5-style system.
 
 **Use when:** Creating plans, specs, skills, RFCs, ADRs, or other project documentation.
 
 **Templates included:**
-- Plan template (for Plan Mode exploration)
-- Spec template (for evergreen architecture docs)
-- Skill template (for agent implementation guides)
-- RFC template (for formal proposals)
-- ADR template (for architecture decisions)
-- Bug report template
-- Feature request template
-- Pull request template
+- Plan, Spec, Skill templates
+- RFC, ADR templates
+- Bug report, Feature request, Pull request templates
 
-### github-releases
+#### github-releases
 
-Create GitHub releases with proper versioning, changelogs, and artifacts.
+Release workflows for multiple tech stacks.
 
-**Use when:** Creating a release, tagging a version, publishing, or generating release notes.
+**Use when:** Creating a release, tagging a version, publishing, or deploying.
+
+**Supports:**
+- Rust CLI (tag-triggered, multi-platform, Homebrew)
+- macOS apps (Makefile, notarization, S3, Sparkle)
+- Python/uv (EC2 deploy with health checks)
+- Next.js (Vercel auto-deploy)
+
+### Rust Skills
+
+#### rust-development
+
+Rust development workflow with quality gates and iteration patterns.
+
+**Use when:** Developing Rust code, running tests, or iterating on Rust projects.
+
+**Covers:**
+- Quality gates: `cargo fmt`, `clippy`, `test`
+- Error handling with `anyhow` and `thiserror`
+- Common patterns (Builder, Newtype)
+- IDE integration
+
+#### rust-onboard
+
+Set up new Rust projects with proper infrastructure.
+
+**Use when:** Starting a new Rust project or adding CI/CD to an existing one.
+
+**Includes:**
+- GitHub Actions CI/CD workflows
+- Release workflow with multi-platform builds
+- Homebrew formula template
+- Project structure and configuration
+
+#### rust-release
+
+Release Rust CLI tools with multi-platform binaries.
+
+**Use when:** Releasing a new version of a Rust CLI tool.
 
 **Features:**
-- Semantic versioning guidance
-- Changelog generation from git history
-- Pre-release/beta workflow
-- Artifact upload
-- Rollback procedures
+- Multi-platform builds (Linux, macOS, Windows)
+- GitHub Releases with checksums
+- Homebrew tap updates
+- Prerelease support (alpha, beta, rc)
+
+#### rust-best-practices
+
+Idiomatic Rust coding patterns and guidelines.
+
+**Use when:** Writing Rust code, reviewing code, or learning Rust idioms.
+
+**Covers:**
+- Error handling patterns
+- Ownership and borrowing
+- API design (Builder, Newtype)
+- Testing and documentation
+- Performance considerations
 
 ## Project Structure
 
 ```
 thrashr888-agent-kit/
 ├── .claude-plugin/
-│   └── plugin.json          # Plugin configuration
+│   ├── plugin.json           # Plugin configuration
+│   └── marketplace.json      # Marketplace catalog
 ├── skills/
-│   ├── style-docs/
-│   │   ├── SKILL.md         # 5-style documentation system
-│   │   └── references/      # 8 document templates
-│   └── github-releases/
-│       ├── SKILL.md         # Release workflow guide
-│       └── scripts/         # Automation scripts
-├── CLAUDE.md                # Agent instructions
-├── AGENTS.md                # Compiled agent instructions
-└── README.md                # This file
+│   ├── style-docs/           # Documentation templates
+│   ├── github-releases/      # Release workflows
+│   ├── rust-development/     # Rust dev workflow
+│   ├── rust-onboard/         # Rust project setup
+│   ├── rust-release/         # Rust release workflow
+│   └── rust-best-practices/  # Rust coding guidelines
+├── CLAUDE.md
+├── AGENTS.md
+└── README.md
 ```
 
 ## The 5-Style Documentation System
@@ -81,10 +129,10 @@ thrashr888-agent-kit/
 Skills are designed to be focused and reusable. When adding new skills:
 
 1. Create a directory under `skills/`
-2. Add `SKILL.md` with frontmatter (name, description)
+2. Add `SKILL.md` with frontmatter (name, description, allowed-tools)
 3. Add `references/` for supporting docs
 4. Add `scripts/` for automation helpers
-5. Update this README
+5. Update `marketplace.json` and this README
 
 ## License
 

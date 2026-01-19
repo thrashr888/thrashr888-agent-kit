@@ -2,7 +2,7 @@
   "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "thrashr888-agent-kit",
   "description": "Development workflows, release automation, and best practices for Rust, Python, Next.js, and Swift projects",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "owner": {
     "name": "Paul Thrasher",
     "email": "paul@thrasher.dev"
@@ -22,12 +22,52 @@
     {
       "name": "github-releases",
       "source": "./skills/github-releases",
-      "description": "GitHub release workflow with versioning, changelog generation, and artifact handling",
-      "version": "0.1.0",
+      "description": "Release workflows for Rust CLI, macOS apps, Python/uv, and Next.js projects",
+      "version": "0.2.0",
       "author": {
         "name": "Paul Thrasher"
       },
       "tags": ["releases", "versioning", "changelog", "ci-cd"]
+    },
+    {
+      "name": "rust-development",
+      "source": "./skills/rust-development",
+      "description": "Rust development workflow with quality gates, testing, and iteration patterns",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": ["rust", "development", "testing", "workflow"]
+    },
+    {
+      "name": "rust-onboard",
+      "source": "./skills/rust-onboard",
+      "description": "Onboard new Rust projects with CI/CD, tooling, and Homebrew distribution",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": ["rust", "onboarding", "ci-cd", "homebrew"]
+    },
+    {
+      "name": "rust-release",
+      "source": "./skills/rust-release",
+      "description": "Release Rust CLI tools with multi-platform binaries and Homebrew tap updates",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": ["rust", "releases", "homebrew", "github-actions"]
+    },
+    {
+      "name": "rust-best-practices",
+      "source": "./skills/rust-best-practices",
+      "description": "Rust coding best practices for idiomatic, efficient, and maintainable code",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": ["rust", "best-practices", "patterns", "idioms"]
     }
   ]
 }
