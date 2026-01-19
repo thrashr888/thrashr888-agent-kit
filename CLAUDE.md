@@ -1,52 +1,67 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code when working with this repository.
 
 ## Project Overview
 
-**thrashr888-agent-kit** - [Add project description here]
+**thrashr888-agent-kit** - A Claude Code plugin marketplace with development workflows, Rust tooling, and best practices.
 
-## Build Commands
+## Project Structure
 
-```bash
-# Build the project
-[Add build command]
-
-# Run tests
-[Add test command]
-
-# Run the project
-[Add run command]
+```
+thrashr888-agent-kit/
+├── .claude-plugin/
+│   └── plugin.json          # Plugin configuration
+├── skills/
+│   ├── style-docs/          # 5-style documentation system
+│   │   ├── SKILL.md
+│   │   └── references/      # 8 document templates
+│   └── github-releases/     # Release workflow
+│       ├── SKILL.md
+│       └── scripts/
+├── CLAUDE.md                # This file
+├── AGENTS.md                # Compiled agent instructions
+└── README.md
 ```
 
-## Architecture Overview
+## Adding Skills
 
-[Describe your project architecture here]
+Each skill needs:
+1. Directory under `skills/`
+2. `SKILL.md` with YAML frontmatter:
+   ```yaml
+   ---
+   name: skill-name
+   description: One-line description. Use when [triggers].
+   allowed-tools: Read, Edit, Write, Bash, Grep, Glob
+   ---
+   ```
+3. Optional `references/` for supporting docs
+4. Optional `scripts/` for automation
 
-## Development Workflow
+## Skill Design Principles
 
-[Describe your development workflow here]
+- **Single purpose**: Each skill does one thing well
+- **Clear triggers**: Description says when to use it
+- **Prescriptive**: Step-by-step workflows, not abstract guidance
+- **Code examples**: Show, don't just tell
+- **Tool allowlists**: Limit scope with `allowed-tools`
 
 ## Beads Issue Tracking
 
 This repository uses `bd` (beads) for issue tracking.
 
-### Essential Beads Commands
-
 ```bash
-# Create issues
-bd create --title="Implement feature X" --type=feature --priority=1
-
-# List and filter
-bd list --status=open
-bd ready                    # Show unblocked work
-
-# Update work
+bd ready              # Show unblocked work
+bd show <id>          # View issue details
 bd update <id> --status=in_progress
 bd close <id>
-
-# Dependencies
-bd dep add <issue> <depends-on>
+bd sync               # Sync with git
 ```
 
-Use beads for tracking multi-session work and complex features with dependencies.
+## Quality Guidelines
+
+- Skills should be self-contained and testable
+- Reference external resources in `references/`
+- Automation scripts go in `scripts/`
+- Update README when adding skills
