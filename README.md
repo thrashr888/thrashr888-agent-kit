@@ -17,26 +17,49 @@ Or add to your project's `.claude/settings.local.json`:
 }
 ```
 
-## Skills
+## Skills (10 total)
 
-### Development Skills
+### Development
 
-#### style-docs
+| Skill | Description |
+|-------|-------------|
+| **style-docs** | 5-style documentation system (plans, specs, skills, RFCs, ADRs) |
+| **github-releases** | Release workflows for Rust, macOS apps, Python/uv, Next.js |
+| **makefile-patterns** | Makefile patterns for dev, build, test, and release automation |
+
+### Rust
+
+| Skill | Description |
+|-------|-------------|
+| **rust-development** | Quality gates, testing, iteration patterns |
+| **rust-onboard** | Project setup with CI/CD and Homebrew |
+| **rust-release** | Multi-platform builds, GitHub Releases, Homebrew taps |
+| **rust-best-practices** | Idiomatic patterns, error handling, API design |
+
+### Python
+
+| Skill | Description |
+|-------|-------------|
+| **python-uv** | Modern Python with uv, pytest, FastAPI, Django, EC2 deploy |
+
+### Infrastructure
+
+| Skill | Description |
+|-------|-------------|
+| **hcp-terraform** | HCP Terraform (Terraform Cloud) remote plan/apply workflow |
+| **homebrew-tap** | Manage Homebrew formulas and casks for distribution |
+
+## Skill Details
+
+### style-docs
 
 Generate standardized project documentation using the 5-style system.
 
 **Use when:** Creating plans, specs, skills, RFCs, ADRs, or other project documentation.
 
-**Templates included:**
-- Plan, Spec, Skill templates
-- RFC, ADR templates
-- Bug report, Feature request, Pull request templates
-
-#### github-releases
+### github-releases
 
 Release workflows for multiple tech stacks.
-
-**Use when:** Creating a release, tagging a version, publishing, or deploying.
 
 **Supports:**
 - Rust CLI (tag-triggered, multi-platform, Homebrew)
@@ -44,56 +67,45 @@ Release workflows for multiple tech stacks.
 - Python/uv (EC2 deploy with health checks)
 - Next.js (Vercel auto-deploy)
 
-### Rust Skills
+### python-uv
 
-#### rust-development
+Modern Python development with uv package manager.
 
-Rust development workflow with quality gates and iteration patterns.
-
-**Use when:** Developing Rust code, running tests, or iterating on Rust projects.
+**Use when:** Working on Python projects using uv, pytest, FastAPI, or Django.
 
 **Covers:**
-- Quality gates: `cargo fmt`, `clippy`, `test`
-- Error handling with `anyhow` and `thiserror`
-- Common patterns (Builder, Newtype)
-- IDE integration
+- uv sync, add, run commands
+- pytest testing patterns
+- FastAPI/Django development
+- EC2 deployment with health checks
+- GitHub Actions CI
 
-#### rust-onboard
+### hcp-terraform
 
-Set up new Rust projects with proper infrastructure.
+HCP Terraform (Terraform Cloud) workflow.
 
-**Use when:** Starting a new Rust project or adding CI/CD to an existing one.
+**Use when:** Working with Terraform that runs remotely in HCP Terraform.
+
+**Key constraint:** Cannot apply locally - all plans/applies run in HCP Terraform.
+
+### homebrew-tap
+
+Manage Homebrew taps for distributing software.
+
+**Use when:** Creating or updating Homebrew formulas (CLI tools) or casks (macOS apps).
+
+### makefile-patterns
+
+Common Makefile patterns for automation.
+
+**Use when:** Creating or understanding Makefiles for build, test, and release workflows.
 
 **Includes:**
-- GitHub Actions CI/CD workflows
-- Release workflow with multi-platform builds
-- Homebrew formula template
-- Project structure and configuration
-
-#### rust-release
-
-Release Rust CLI tools with multi-platform binaries.
-
-**Use when:** Releasing a new version of a Rust CLI tool.
-
-**Features:**
-- Multi-platform builds (Linux, macOS, Windows)
-- GitHub Releases with checksums
+- Dev loop (kill, build, run)
+- Rust, Xcode, Python build patterns
+- DMG creation, S3 upload
 - Homebrew tap updates
-- Prerelease support (alpha, beta, rc)
-
-#### rust-best-practices
-
-Idiomatic Rust coding patterns and guidelines.
-
-**Use when:** Writing Rust code, reviewing code, or learning Rust idioms.
-
-**Covers:**
-- Error handling patterns
-- Ownership and borrowing
-- API design (Builder, Newtype)
-- Testing and documentation
-- Performance considerations
+- Git tagging
 
 ## Project Structure
 
@@ -101,14 +113,18 @@ Idiomatic Rust coding patterns and guidelines.
 thrashr888-agent-kit/
 ├── .claude-plugin/
 │   ├── plugin.json           # Plugin configuration
-│   └── marketplace.json      # Marketplace catalog
+│   └── marketplace.json      # Marketplace catalog (10 plugins)
 ├── skills/
 │   ├── style-docs/           # Documentation templates
 │   ├── github-releases/      # Release workflows
+│   ├── makefile-patterns/    # Makefile automation
 │   ├── rust-development/     # Rust dev workflow
 │   ├── rust-onboard/         # Rust project setup
 │   ├── rust-release/         # Rust release workflow
-│   └── rust-best-practices/  # Rust coding guidelines
+│   ├── rust-best-practices/  # Rust coding guidelines
+│   ├── python-uv/            # Python/uv development
+│   ├── hcp-terraform/        # Terraform Cloud workflow
+│   └── homebrew-tap/         # Homebrew distribution
 ├── CLAUDE.md
 ├── AGENTS.md
 └── README.md

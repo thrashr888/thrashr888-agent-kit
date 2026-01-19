@@ -2,7 +2,7 @@
   "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "thrashr888-agent-kit",
   "description": "Development workflows, release automation, and best practices for Rust, Python, Next.js, and Swift projects",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "owner": {
     "name": "Paul Thrasher",
     "email": "paul@thrasher.dev"
@@ -68,6 +68,46 @@
         "name": "Paul Thrasher"
       },
       "tags": ["rust", "best-practices", "patterns", "idioms"]
+    },
+    {
+      "name": "python-uv",
+      "source": "./skills/python-uv",
+      "description": "Modern Python development with uv package manager, pytest, FastAPI, and Django",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": ["python", "uv", "fastapi", "django", "pytest"]
+    },
+    {
+      "name": "hcp-terraform",
+      "source": "./skills/hcp-terraform",
+      "description": "HCP Terraform (Terraform Cloud) workflow for remote plan and apply",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": ["terraform", "hcp", "infrastructure", "aws"]
+    },
+    {
+      "name": "homebrew-tap",
+      "source": "./skills/homebrew-tap",
+      "description": "Manage Homebrew taps for distributing CLI tools and macOS apps",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": ["homebrew", "distribution", "macos", "cli"]
+    },
+    {
+      "name": "makefile-patterns",
+      "source": "./skills/makefile-patterns",
+      "description": "Makefile patterns for development, building, testing, and releasing",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": ["makefile", "build", "automation", "workflow"]
     }
   ]
 }
