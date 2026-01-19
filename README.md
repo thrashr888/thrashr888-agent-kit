@@ -4,12 +4,19 @@ A Claude Code plugin marketplace with development workflows, Rust tooling, and b
 
 ## Installation
 
+### Option 1: Add the marketplace (recommended)
+
 ```bash
-# Install via Claude Code
-claude plugins install thrashr888/thrashr888-agent-kit
+# Add marketplace via CLI
+claude plugin marketplace add thrashr888/thrashr888-agent-kit
+
+# Then inside Claude Code REPL, install specific skills
+/plugin install thrashr888-agent-kit@rust-development
 ```
 
-Or add to your project's `.claude/settings.local.json`:
+### Option 2: Direct configuration
+
+Add to your project's `.claude/settings.local.json`:
 
 ```json
 {
