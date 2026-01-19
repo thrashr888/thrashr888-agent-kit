@@ -1,267 +1,261 @@
 ---
 name: github-releases
-description: Create GitHub releases with proper versioning, changelogs, and artifacts. Use when asked to create a release, tag a version, publish a release, or generate release notes from git history.
+description: Create releases for Rust CLI tools, macOS apps, Python/uv projects, and Next.js apps. Use when asked to release, tag, ship, publish, or deploy any project.
 allowed-tools: Read, Edit, Bash, Grep, Glob, WebFetch
 ---
 
-# GitHub Releases Workflow
+# Release Workflows
 
-Automate the release process including quality checks, version bumping, tagging, and optional package manager updates.
+Project-specific release workflows covering Rust CLI tools, macOS apps, Python/uv deployments, and Next.js apps.
 
-## Pre-Release Checklist
+## Quick Reference: Which Workflow?
 
-Before releasing, verify:
+| Project Type | Workflow | Trigger |
+|-------------|----------|---------|
+| Rust CLI (AllBeads, QDOS) | Tag-triggered CI | `git tag -a vX.Y.Z` → GitHub Actions builds binaries |
+| macOS App (ethertext, AllBeadsApp) | Makefile-driven | `make archive` → notarize → `make release` |
+| Python/uv (rookery) | CI Deploy | Push to main → tests pass → auto-deploy to EC2 |
+| Next.js (AllBeadsWeb) | Vercel | Push to main → auto-deploy |
 
-1. **Quality gates pass** (run your project's test suite):
-   ```bash
-   # Example for different project types
-   npm test && npm run build           # Node.js
-   cargo fmt -- --check && cargo clippy -- -D warnings && cargo test  # Rust
-   go test ./... && go build           # Go
-   pytest && python -m build           # Python
-   ```
+---
 
-2. **All blockers closed**: Check issues/beads for the release
-   ```bash
-   bd show <epic-id>  # If using beads
-   gh issue list --label "release-blocker"  # GitHub issues
-   ```
+## Rust CLI Release (AllBeads, QDOS)
 
-3. **Changes committed**: `git status` shows clean working tree
-
-## Release Process
-
-### Step 1: Determine Version
-
-Ask the user what version to release if not specified. Check current version:
+### Pre-Release Checklist
 
 ```bash
-# Get latest tag
-git describe --tags --abbrev=0 2>/dev/null || echo "No tags found"
+# Quality gates (ALL must pass)
+cargo fmt -- --check && cargo clippy -- -D warnings && cargo test
 
-# List recent tags
-git tag --sort=-v:refname | head -5
-```
-
-Determine next version using semantic versioning:
-- **MAJOR** (1.0.0 → 2.0.0): Breaking changes
-- **MINOR** (1.0.0 → 1.1.0): New features, backwards compatible
-- **PATCH** (1.0.0 → 1.0.1): Bug fixes, backwards compatible
-
-### Step 2: Update Version (if applicable)
-
-For projects with version files:
-
-```bash
-# Cargo.toml (Rust)
+# Check current version
 grep '^version' Cargo.toml
-# Edit to: version = "X.Y.Z"
 
-# package.json (Node.js)
-npm version X.Y.Z --no-git-tag-version
-
-# setup.py / pyproject.toml (Python)
-# Edit version field
+# Verify clean working tree
+git status
 ```
 
-### Step 3: Commit Version Bump
+### Release Process
+
+1. **Update version in Cargo.toml**
+   ```toml
+   version = "X.Y.Z"
+   ```
+
+2. **Commit version bump**
+   ```bash
+   git add Cargo.toml Cargo.lock
+   git commit -m "Bump version to X.Y.Z"
+   ```
+
+3. **Create annotated tag** (triggers CI release)
+   ```bash
+   git tag -a vX.Y.Z -m "AllBeads X.Y.Z Release
+
+   ## Highlights
+   - Key feature 1
+
+   ## Changes
+   - Change 1
+
+   ## Bug Fixes
+   - Fix 1"
+   ```
+
+4. **Push to trigger release**
+   ```bash
+   git push && git push --tags
+   ```
+
+5. **Monitor release build**
+   ```bash
+   gh run list --limit 3
+   gh run watch <run-id>
+   ```
+
+6. **Update release title/notes** (optional)
+   ```bash
+   gh release edit vX.Y.Z --title "vX.Y.Z - Feature 1, Feature 2"
+   ```
+
+7. **Update Homebrew tap** (manual)
+   ```bash
+   # Get SHA256 for macOS binary
+   curl -sL https://github.com/USER/REPO/releases/download/vX.Y.Z/binary-macos-aarch64 | shasum -a 256
+
+   # Update homebrew-REPO/Formula/binary.rb
+   # - Update version "X.Y.Z"
+   # - Update sha256 hash
+   cd ~/Workspace/homebrew-REPO
+   git add . && git commit -m "Update to vX.Y.Z" && git push
+   ```
+
+### GitHub Actions Workflow
+
+The release workflow builds multi-platform binaries:
+- Linux x86_64 (glibc + musl)
+- Linux aarch64
+- macOS x86_64 + aarch64
+- Windows x86_64
+
+Prerelease detection: tags containing `alpha`, `beta`, or `rc` are marked as prereleases.
+
+---
+
+## macOS App Release (ethertext, AllBeadsApp)
+
+### Prerequisites
+
+- Xcode with valid signing identity
+- `create-dmg` installed: `brew install create-dmg`
+- AWS CLI configured for S3 uploads
+- Sparkle for auto-updates: `brew install --cask sparkle`
+
+### Release Process
+
+1. **Update version in Xcode**
+   - Set `MARKETING_VERSION` in project settings
+
+2. **Create Xcode archive**
+   ```bash
+   make archive
+   ```
+
+3. **Notarize in Xcode Organizer**
+   - Distribute App → Developer ID → Upload
+   - Wait for notarization
+   - Export notarized app to `~/Downloads/`
+
+4. **Run release**
+   ```bash
+   make release
+   ```
+   This:
+   - Creates DMG from exported app
+   - Uploads to S3 (versioned + latest)
+   - Generates Sparkle appcast.xml
+   - Updates Homebrew Cask
+
+5. **Commit and push**
+   ```bash
+   git add -A && git commit -m "Release $(VERSION)" && git push
+   make tag && git push --tags
+
+   # Push homebrew tap
+   cd ~/Workspace/homebrew-APPNAME
+   git add -A && git commit -m "Update to $(VERSION)" && git push
+   ```
+
+### Makefile Targets
+
+| Target | Description |
+|--------|-------------|
+| `make version` | Show current version |
+| `make archive` | Create Xcode archive |
+| `make dmg` | Create DMG from exported app |
+| `make upload` | Upload DMG to S3 |
+| `make appcast` | Generate Sparkle appcast.xml |
+| `make brew-update` | Update Homebrew cask |
+| `make release` | Full release (upload + appcast + brew) |
+| `make tag` | Create git tag |
+
+### Sparkle Setup (Auto-Updates)
 
 ```bash
-git add .
-git commit -m "Bump version to X.Y.Z"
+make install-sparkle  # Install tools + generate keys
+make sparkle-pubkey   # Show public key for Info.plist
+make sparkle-sign     # Sign DMG for appcast
 ```
 
-### Step 4: Create Annotated Tag
+---
 
-Create a tag with release notes:
+## Python/uv Deploy (rookery)
+
+Continuous deployment triggered by successful tests.
+
+### Deployment Flow
+
+1. Push to main
+2. GitHub Actions runs `pytest`
+3. On success, triggers deploy workflow
+4. SSH deploy to EC2:
+   - Rsync files
+   - `uv sync` dependencies
+   - `alembic upgrade head` migrations
+   - Restart systemd service
+   - Health check (5 retries)
+
+### Manual Deploy
 
 ```bash
-git tag -a vX.Y.Z -m "Release vX.Y.Z
-
-## Highlights
-- Key feature 1
-- Key feature 2
-
-## Changes
-- Change 1
-- Change 2
-
-## Bug Fixes
-- Fix 1"
+# Trigger deploy workflow manually
+gh workflow run deploy.yml
 ```
 
-### Step 5: Push to GitHub
+### Version Tracking
+
+Deployments are stamped with build version:
+```bash
+printf "%s\n" "$(date -u +%Y%m%dT%H%M%SZ)_$(git rev-parse --short HEAD)" > VERSION
+```
+
+---
+
+## Next.js/Vercel Deploy (AllBeadsWeb)
+
+Auto-deploy on push to main. No manual release process.
+
+### CI Workflow
 
 ```bash
-git push && git push --tags
+bun install
+bun run typecheck
+bun run test
 ```
 
-### Step 6: Create Release (if not using CI)
+Vercel handles deployment automatically.
 
-```bash
-gh release create vX.Y.Z \
-  --title "vX.Y.Z" \
-  --notes "$(cat <<'EOF'
-## Highlights
-- Key feature 1
-- Key feature 2
-
-## Changes
-- Change 1
-
-## Bug Fixes
-- Fix 1
-EOF
-)"
-```
-
-### Step 7: Monitor Release Build (if using CI)
-
-```bash
-gh run list --limit 3
-gh run watch <run-id>
-```
-
-### Step 8: Attach Artifacts (if applicable)
-
-```bash
-# Upload release artifacts
-gh release upload vX.Y.Z ./dist/artifact.tar.gz ./dist/artifact.zip
-
-# Upload with custom names
-gh release upload vX.Y.Z ./build/output.tar.gz#myproject-vX.Y.Z-linux.tar.gz
-```
-
-### Step 9: Update Release Title/Notes
-
-```bash
-gh release edit vX.Y.Z --title "vX.Y.Z - Feature 1, Feature 2" --notes "$(cat <<'EOF'
-## Highlights
-- Key feature 1
-
-## Changes
-- Change 1
-
-## Bug Fixes
-- Fix 1
-EOF
-)"
-```
-
-### Step 10: Close Release Epic (if using beads)
-
-```bash
-bd close <epic-id> --reason="Released vX.Y.Z"
-bd sync
-```
-
-## Generate Changelog
-
-Collect changes since last release:
-
-```bash
-# Changes since last tag
-git log $(git describe --tags --abbrev=0)..HEAD --oneline
-
-# With more detail
-git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- %s (%h)"
-```
-
-Categorize changes:
-- **Added**: New features
-- **Changed**: Changes in existing functionality
-- **Deprecated**: Soon-to-be removed features
-- **Removed**: Removed features
-- **Fixed**: Bug fixes
-- **Security**: Security fixes
-
-## Release Notes Format
-
-```markdown
-## What's New
-
-### Added
-- Feature description (#PR)
-
-### Changed
-- Change description (#PR)
-
-### Fixed
-- Bug fix description (#PR)
-
-## Breaking Changes
-
-- Description of breaking change and migration path
-
-## Contributors
-
-@username, @username
-
-## Full Changelog
-
-https://github.com/owner/repo/compare/v1.1.0...v1.2.0
-```
-
-## Pre-release Workflow
-
-For beta/alpha releases:
-
-```bash
-gh release create vX.Y.Z-beta.1 \
-  --prerelease \
-  --title "vX.Y.Z Beta 1" \
-  --notes "Beta release for testing"
-```
+---
 
 ## Troubleshooting
 
-### Workflow job stuck or cancelled
-
-GitHub Actions runners can be unreliable. If a job is stuck:
-
-1. Cancel the stuck workflow: `gh run cancel <run-id>`
-2. Delete and recreate the tag:
-   ```bash
-   git push origin :refs/tags/vX.Y.Z  # Delete remote tag
-   git tag -d vX.Y.Z                   # Delete local tag
-   git tag -a vX.Y.Z -m "Release"      # Recreate tag
-   git push origin vX.Y.Z              # Push new tag
-   ```
-
-### Test workflow changes safely
-
-Before modifying release workflows, test with a test tag (e.g., `v0.0.0-test`).
-
-## Rollback
-
-If something goes wrong:
+### Stuck GitHub Actions workflow
 
 ```bash
-# Delete local tag
-git tag -d vX.Y.Z
+gh run cancel <run-id>
 
-# Delete remote tag
+# Delete and recreate tag
+git push origin :refs/tags/vX.Y.Z
+git tag -d vX.Y.Z
+git tag -a vX.Y.Z -m "Release"
+git push origin vX.Y.Z
+```
+
+### Rollback
+
+```bash
+# Delete tag
+git tag -d vX.Y.Z
 git push origin :refs/tags/vX.Y.Z
 
 # Delete release
 gh release delete vX.Y.Z
 
-# Revert commits if needed
+# Revert if needed
 git revert HEAD
 ```
 
-## Automation Script
+### macOS app not notarized
 
-Use `scripts/create-release.sh` for automated releases:
-
+Export from Xcode Organizer ensures stapling. Verify with:
 ```bash
-./scripts/create-release.sh patch  # 1.0.0 → 1.0.1
-./scripts/create-release.sh minor  # 1.0.0 → 1.1.0
-./scripts/create-release.sh major  # 1.0.0 → 2.0.0
+xcrun stapler validate ~/Downloads/AppName.app
 ```
+
+---
 
 ## Resources
 
-- `scripts/create-release.sh`: Automated release script
+- `scripts/create-release.sh`: Automated Rust release script
 - [Semantic Versioning](https://semver.org/)
 - [Keep a Changelog](https://keepachangelog.com/)
+- [Sparkle Documentation](https://sparkle-project.org/)

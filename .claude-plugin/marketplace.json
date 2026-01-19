@@ -1,0 +1,33 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "thrashr888-agent-kit",
+  "description": "Development workflows, release automation, and best practices for Rust, Python, Next.js, and Swift projects",
+  "version": "0.1.0",
+  "owner": {
+    "name": "Paul Thrasher",
+    "email": "paul@thrasher.dev"
+  },
+  "repository": "https://github.com/thrashr888/thrashr888-agent-kit",
+  "plugins": [
+    {
+      "name": "style-docs",
+      "source": "./skills/style-docs",
+      "description": "5-style documentation system with templates for plans, specs, skills, RFCs, ADRs, bug reports, feature requests, and PRs",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": ["documentation", "templates", "workflow"]
+    },
+    {
+      "name": "github-releases",
+      "source": "./skills/github-releases",
+      "description": "GitHub release workflow with versioning, changelog generation, and artifact handling",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": ["releases", "versioning", "changelog", "ci-cd"]
+    }
+  ]
+}
