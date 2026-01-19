@@ -167,6 +167,62 @@ cargo build --timings
 cargo bloat --release  # requires cargo-bloat
 ```
 
+## Build Performance
+
+### Use mold linker (Linux)
+
+Faster linking times:
+
+```toml
+# .cargo/config.toml
+[target.'cfg(target_os = "linux")']
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+```
+
+Install: `sudo apt install mold` or `brew install mold`
+
+### Use sccache for caching
+
+Cache compiler artifacts across builds:
+
+```bash
+cargo install --locked sccache
+export RUSTC_WRAPPER=sccache
+
+# Add to shell profile for persistence
+echo 'export RUSTC_WRAPPER=sccache' >> ~/.zshrc
+```
+
+### Auto-derive macro
+
+Reduce boilerplate for common derives:
+
+```rust
+macro_rules! auto_derived {
+    ( $( $item:item )+ ) => {
+        $(
+            #[derive(Debug, Clone, PartialEq, Eq)]
+            $item
+        )+
+    };
+}
+
+// Usage
+auto_derived! {
+    pub struct User {
+        id: i64,
+        name: String,
+    }
+
+    pub struct Config {
+        host: String,
+        port: u16,
+    }
+}
+```
+
+Add `Serialize, Deserialize` to the macro if using serde.
+
 ## Common Patterns
 
 ### Builder Pattern
