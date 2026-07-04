@@ -33,7 +33,7 @@ Add to your project's `.claude/settings.local.json`:
 }
 ```
 
-## Skills (10 total)
+## Skills (13 total)
 
 ### Development
 
@@ -57,6 +57,14 @@ Add to your project's `.claude/settings.local.json`:
 | Skill | Description |
 |-------|-------------|
 | **python-uv** | Modern Python with uv, pytest, FastAPI, Django, EC2 deploy |
+
+### Tauri & Desktop
+
+| Skill | Description |
+|-------|-------------|
+| **shipping-tauri-apps** | Build, sign, notarize, release Tauri 2 apps on macOS; dev-loop gotchas |
+| **driving-tauri-apps** | Automate running Tauri apps with tauri-browser (testing, screenshots, demos) |
+| **building-local-ai-apps** | Local-AI app design: providers, RAG, citation UX, streaming, demo corpora |
 
 ### Infrastructure
 

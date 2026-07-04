@@ -307,6 +307,17 @@ brew update
 brew upgrade mytool
 ```
 
+### "Refusing to load formula ... from untrusted tap"
+
+Newer Homebrew requires third-party taps (including your own) to be explicitly trusted
+before installing or upgrading from them:
+
+```bash
+brew trust thrashr888/tap        # or: brew trust --formula thrashr888/tap/mytool
+```
+
+Document this in the tap's install instructions — every new user hits it once.
+
 ## Checklist: New Release
 
 - [ ] Build and upload release artifacts

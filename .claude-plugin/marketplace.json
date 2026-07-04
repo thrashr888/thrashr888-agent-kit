@@ -2,7 +2,7 @@
   "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "thrashr888-agent-kit",
   "description": "Development workflows, release automation, and best practices for Rust, Python, Next.js, and Swift projects",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "owner": {
     "name": "Paul Thrasher",
     "email": "paul@thrasher.dev"
@@ -17,7 +17,11 @@
       "author": {
         "name": "Paul Thrasher"
       },
-      "tags": ["documentation", "templates", "workflow"]
+      "tags": [
+        "documentation",
+        "templates",
+        "workflow"
+      ]
     },
     {
       "name": "github-releases",
@@ -27,7 +31,12 @@
       "author": {
         "name": "Paul Thrasher"
       },
-      "tags": ["releases", "versioning", "changelog", "ci-cd"]
+      "tags": [
+        "releases",
+        "versioning",
+        "changelog",
+        "ci-cd"
+      ]
     },
     {
       "name": "rust-development",
@@ -37,7 +46,12 @@
       "author": {
         "name": "Paul Thrasher"
       },
-      "tags": ["rust", "development", "testing", "workflow"]
+      "tags": [
+        "rust",
+        "development",
+        "testing",
+        "workflow"
+      ]
     },
     {
       "name": "rust-onboard",
@@ -47,7 +61,12 @@
       "author": {
         "name": "Paul Thrasher"
       },
-      "tags": ["rust", "onboarding", "ci-cd", "homebrew"]
+      "tags": [
+        "rust",
+        "onboarding",
+        "ci-cd",
+        "homebrew"
+      ]
     },
     {
       "name": "rust-release",
@@ -57,7 +76,12 @@
       "author": {
         "name": "Paul Thrasher"
       },
-      "tags": ["rust", "releases", "homebrew", "github-actions"]
+      "tags": [
+        "rust",
+        "releases",
+        "homebrew",
+        "github-actions"
+      ]
     },
     {
       "name": "rust-best-practices",
@@ -67,7 +91,12 @@
       "author": {
         "name": "Paul Thrasher"
       },
-      "tags": ["rust", "best-practices", "patterns", "idioms"]
+      "tags": [
+        "rust",
+        "best-practices",
+        "patterns",
+        "idioms"
+      ]
     },
     {
       "name": "python-uv",
@@ -77,7 +106,13 @@
       "author": {
         "name": "Paul Thrasher"
       },
-      "tags": ["python", "uv", "fastapi", "django", "pytest"]
+      "tags": [
+        "python",
+        "uv",
+        "fastapi",
+        "django",
+        "pytest"
+      ]
     },
     {
       "name": "hcp-terraform",
@@ -87,7 +122,12 @@
       "author": {
         "name": "Paul Thrasher"
       },
-      "tags": ["terraform", "hcp", "infrastructure", "aws"]
+      "tags": [
+        "terraform",
+        "hcp",
+        "infrastructure",
+        "aws"
+      ]
     },
     {
       "name": "homebrew-tap",
@@ -97,7 +137,12 @@
       "author": {
         "name": "Paul Thrasher"
       },
-      "tags": ["homebrew", "distribution", "macos", "cli"]
+      "tags": [
+        "homebrew",
+        "distribution",
+        "macos",
+        "cli"
+      ]
     },
     {
       "name": "makefile-patterns",
@@ -107,7 +152,60 @@
       "author": {
         "name": "Paul Thrasher"
       },
-      "tags": ["makefile", "build", "automation", "workflow"]
+      "tags": [
+        "makefile",
+        "build",
+        "automation",
+        "workflow"
+      ]
+    },
+    {
+      "name": "shipping-tauri-apps",
+      "source": "./skills/shipping-tauri-apps",
+      "description": "Build, sign, notarize, and release Tauri 2 desktop apps on macOS, plus dev-loop gotchas (ACL capabilities, watcher, cargo patches)",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": [
+        "tauri",
+        "macos",
+        "code-signing",
+        "notarization",
+        "releases"
+      ]
+    },
+    {
+      "name": "driving-tauri-apps",
+      "source": "./skills/driving-tauri-apps",
+      "description": "Automate and verify running Tauri apps with tauri-browser — snapshots, React-safe fills, screenshots, direct command invokes, demo seeding",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": [
+        "tauri",
+        "automation",
+        "testing",
+        "screenshots",
+        "agents"
+      ]
+    },
+    {
+      "name": "building-local-ai-apps",
+      "source": "./skills/building-local-ai-apps",
+      "description": "Design patterns for local-first AI apps — provider abstraction, RAG retrieval and ingestion hygiene, citation UX, streaming, scoped cancellation, demo-corpus design",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": [
+        "ai",
+        "rag",
+        "ux",
+        "ollama",
+        "app-design"
+      ]
     }
   ]
 }
