@@ -1,4 +1,7 @@
 {
-  "database": "beads.db",
-  "jsonl_export": "issues.jsonl"
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "thrashr888_agent_kit",
+  "project_id": "ec1f28de-50f9-4244-a610-a82abec2b66b"
 }
