@@ -40,6 +40,7 @@ Add to your project's `.claude/settings.local.json`:
 | Skill | Description |
 |-------|-------------|
 | **style-docs** | 5-style documentation system (plans, specs, skills, RFCs, ADRs) |
+| **copy-review** | Review user-facing copy for machine-sounding writing; codify the voice in WRITING.md |
 | **github-releases** | Release workflows for Rust, macOS apps, Python/uv, Next.js |
 | **makefile-patterns** | Makefile patterns for dev, build, test, and release automation |
 
@@ -74,6 +75,12 @@ Add to your project's `.claude/settings.local.json`:
 | **homebrew-tap** | Manage Homebrew formulas and casks for distribution |
 
 ## Skill Details
+
+### copy-review
+
+Review user-facing copy for AI-isms, offer rewrites in named brand voices, and codify the owner's picks as a repo WRITING.md. Ships a mechanical tell-check script that works as a commit gate.
+
+**Use when:** Copy reads machine-written, a site or release notes need a human pass, or a project needs a writing style guide.
 
 ### style-docs
 
