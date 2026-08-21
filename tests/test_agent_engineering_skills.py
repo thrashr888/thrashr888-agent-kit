@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import re
 import unittest
 
 
@@ -29,6 +30,8 @@ SKILLS = {
             "## Pitfalls",
             "## Verification",
             "Define success before exploring solutions",
+            "including a requested technology",
+            "before changing scope.",
             "Verify independently",
             "Assess and codify only durable learning",
         ],
@@ -61,7 +64,7 @@ class AgentEngineeringSkillTests(unittest.TestCase):
             for reference in expectations["references"]:
                 self.assertTrue((skill_dir / reference).is_file(), f"{name}: {reference}")
 
-    def test_marketplace_registers_both_skills(self) -> None:
+    def test_marketplace_registers_every_skill_directory(self) -> None:
         marketplace = json.loads(
             (ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8")
         )
@@ -70,17 +73,25 @@ class AgentEngineeringSkillTests(unittest.TestCase):
 
         self.assertRegex(marketplace["version"], r"^\d+\.\d+\.\d+$")
         self.assertEqual(len(plugins), len(plugin_list), "plugin names must be unique")
-        for name in SKILLS:
-            self.assertIn(name, plugins)
+        skill_directories = {
+            path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md")
+        }
+        self.assertEqual(set(plugins), skill_directories)
+        for name in skill_directories:
             source = ROOT / plugins[name]["source"].removeprefix("./")
             self.assertTrue((source / "SKILL.md").is_file(), name)
 
-    def test_readme_lists_new_skills(self) -> None:
+    def test_readme_catalog_matches_marketplace(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         marketplace = json.loads(
             (ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8")
         )
-        self.assertIn(f"## Skills ({len(marketplace['plugins'])} total)", readme)
+        plugin_names = {plugin["name"] for plugin in marketplace["plugins"]}
+        catalog_names = set(
+            re.findall(r"^\| \*\*([^*]+)\*\* \|", readme, flags=re.MULTILINE)
+        )
+        self.assertIn(f"## Skills ({len(plugin_names)} total)", readme)
+        self.assertEqual(catalog_names, plugin_names)
         for name in SKILLS:
             self.assertIn(f"claude plugin install {name}@thrashr888-agent-kit", readme)
             self.assertIn(f"**{name}**", readme)

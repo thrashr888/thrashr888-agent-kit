@@ -2,7 +2,7 @@
   "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "thrashr888-agent-kit",
   "description": "Development workflows, release automation, and best practices for Rust, Python, Next.js, and Swift projects",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "owner": {
     "name": "Paul Thrasher",
     "email": "paul@thrasher.dev"
@@ -21,6 +21,22 @@
         "documentation",
         "templates",
         "workflow"
+      ]
+    },
+    {
+      "name": "copy-review",
+      "source": "./skills/copy-review",
+      "description": "Review user-facing copy for machine-sounding writing and codify a durable voice guide",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": [
+        "copywriting",
+        "writing",
+        "review",
+        "voice",
+        "agents"
       ]
     },
     {

@@ -12,6 +12,7 @@ claude plugin marketplace add thrashr888/thrashr888-agent-kit
 
 # Install individual skills
 claude plugin install style-docs@thrashr888-agent-kit
+claude plugin install copy-review@thrashr888-agent-kit
 claude plugin install github-releases@thrashr888-agent-kit
 claude plugin install makefile-patterns@thrashr888-agent-kit
 claude plugin install rust-development@thrashr888-agent-kit
@@ -36,7 +37,7 @@ Add to your project's `.claude/settings.local.json`:
 }
 ```
 
-## Skills (16 total)
+## Skills (17 total)
 
 ### Development
 
@@ -160,7 +161,7 @@ Common Makefile patterns for automation.
 thrashr888-agent-kit/
 ├── .claude-plugin/
 │   ├── plugin.json           # Plugin configuration
-│   └── marketplace.json      # Marketplace catalog (16 plugins)
+│   └── marketplace.json      # Marketplace catalog (17 plugins)
 ├── skills/
 │   ├── style-docs/           # Documentation templates
 │   ├── github-releases/      # Release workflows

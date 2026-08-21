@@ -55,8 +55,12 @@ stable knowledge future work actually needs.
 ### 1. Define success before exploring solutions
 
 Write the observable outcome, non-goals, constraints, and verification standard.
-State requirements—not a guessed implementation. If a prompt says “use service
-X” without an external constraint, treat X as a hypothesis to investigate.
+State requirements—not inferred solution ideas. An explicit user requirement,
+including a requested technology, is a constraint: preserve it unless the user
+asks to reconsider it. Treat only an inferred solution or a non-binding
+suggestion as a hypothesis to investigate. If evidence reveals that an explicit
+request conflicts with a hard requirement, explain the conflict and ask the user
+before changing scope.
 
 For behavior that matters, express acceptance criteria in a condition/action
 form such as: “When _condition_, the system shall _observable behavior_.”
