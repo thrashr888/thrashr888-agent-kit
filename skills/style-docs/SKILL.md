@@ -7,6 +7,22 @@ description: Generate standardized project documentation using the 5-style syste
 
 Use this skill when creating project documentation, planning features, or organizing technical decisions.
 
+## Agent-Ready Documentation
+
+Document intent, constraints, and rationale that code alone cannot reveal.
+Agents can inspect implementation details, but they cannot infer requirements
+discussed in meetings, external contracts, business rules, or the reason a
+non-obvious decision was made. Put those facts in the narrowest durable artifact:
+
+- requirements and plans define observable acceptance criteria and non-goals;
+- specs record invariants, external constraints, and architectural boundaries;
+- ADRs record a significant decision and its rationale; and
+- skills record a repeatable implementation or verification workflow.
+
+Do not write documentation that merely paraphrases code. Before publishing a
+document, ask whether a future engineer or agent could learn *why* this behavior
+exists and how to prove it still meets its constraints.
+
 ## The 5 Documentation Styles
 
 | Style              | Purpose                           | Location          | Update Trigger       |
@@ -60,7 +76,8 @@ bd close <id>
 **Characteristics:**
 - Declarative, not prescriptive
 - Evergreen (rarely becomes stale)
-- Describes constraints and invariants
+- Describes intent, constraints, and invariants
+- States the rationale behind non-obvious boundaries
 
 **Template:** See `references/spec-template.md`
 

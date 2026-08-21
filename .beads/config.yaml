@@ -60,3 +60,5 @@
 # - linear.api-key
 # - github.org
 # - github.repo
+
+sync.remote: "git+https://github.com/thrashr888/thrashr888-agent-kit.git"

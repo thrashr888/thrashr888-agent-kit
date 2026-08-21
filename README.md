@@ -22,6 +22,8 @@ claude plugin install python-uv@thrashr888-agent-kit
 claude plugin install hcp-terraform@thrashr888-agent-kit
 claude plugin install homebrew-tap@thrashr888-agent-kit
 claude plugin install presentation-redesign@thrashr888-agent-kit
+claude plugin install agent-ready-engineering@thrashr888-agent-kit
+claude plugin install research-plan-implement@thrashr888-agent-kit
 ```
 
 ### Option 2: Direct configuration
@@ -34,7 +36,7 @@ Add to your project's `.claude/settings.local.json`:
 }
 ```
 
-## Skills (14 total)
+## Skills (16 total)
 
 ### Development
 
@@ -80,6 +82,13 @@ Add to your project's `.claude/settings.local.json`:
 | Skill | Description |
 |-------|-------------|
 | **presentation-redesign** | Rebuild dense strategy decks for live presentation |
+
+### AI-Augmented Engineering
+
+| Skill | Description |
+|-------|-------------|
+| **agent-ready-engineering** | Make codebases ready for reliable human and agent work |
+| **research-plan-implement** | Run complex agent work through research, plans, and proof |
 
 ## Skill Details
 
@@ -151,7 +160,7 @@ Common Makefile patterns for automation.
 thrashr888-agent-kit/
 ├── .claude-plugin/
 │   ├── plugin.json           # Plugin configuration
-│   └── marketplace.json      # Marketplace catalog (10 plugins)
+│   └── marketplace.json      # Marketplace catalog (16 plugins)
 ├── skills/
 │   ├── style-docs/           # Documentation templates
 │   ├── github-releases/      # Release workflows
@@ -163,7 +172,10 @@ thrashr888-agent-kit/
 │   ├── python-uv/            # Python/uv development
 │   ├── hcp-terraform/        # Terraform Cloud workflow
 │   ├── homebrew-tap/         # Homebrew distribution
-│   └── presentation-redesign/ # Executive presentation redesign workflow
+│   ├── presentation-redesign/ # Executive presentation redesign workflow
+│   ├── agent-ready-engineering/ # Agent-ready DX foundations
+│   └── research-plan-implement/ # Research-to-proof delivery workflow
+├── tests/                       # Skill catalog regression tests
 ├── CLAUDE.md
 ├── AGENTS.md
 └── README.md
