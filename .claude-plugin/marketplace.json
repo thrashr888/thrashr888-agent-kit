@@ -2,7 +2,7 @@
   "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "thrashr888-agent-kit",
   "description": "Development workflows, release automation, and best practices for Rust, Python, Next.js, and Swift projects",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "owner": {
     "name": "Paul Thrasher",
     "email": "paul@thrasher.dev"
@@ -205,6 +205,22 @@
         "ux",
         "ollama",
         "app-design"
+      ]
+    },
+    {
+      "name": "presentation-redesign",
+      "source": "./skills/presentation-redesign",
+      "description": "Rebuild dense strategy decks for live presentation with readable type and a clear executive narrative",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": [
+        "presentations",
+        "powerpoint",
+        "storytelling",
+        "visual-design",
+        "accessibility"
       ]
     }
   ]

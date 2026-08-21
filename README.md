@@ -21,6 +21,7 @@ claude plugin install rust-best-practices@thrashr888-agent-kit
 claude plugin install python-uv@thrashr888-agent-kit
 claude plugin install hcp-terraform@thrashr888-agent-kit
 claude plugin install homebrew-tap@thrashr888-agent-kit
+claude plugin install presentation-redesign@thrashr888-agent-kit
 ```
 
 ### Option 2: Direct configuration
@@ -33,7 +34,7 @@ Add to your project's `.claude/settings.local.json`:
 }
 ```
 
-## Skills (13 total)
+## Skills (14 total)
 
 ### Development
 
@@ -73,6 +74,12 @@ Add to your project's `.claude/settings.local.json`:
 |-------|-------------|
 | **hcp-terraform** | HCP Terraform (Terraform Cloud) remote plan/apply workflow |
 | **homebrew-tap** | Manage Homebrew formulas and casks for distribution |
+
+### Presentation
+
+| Skill | Description |
+|-------|-------------|
+| **presentation-redesign** | Rebuild dense strategy decks for live presentation |
 
 ## Skill Details
 
@@ -155,7 +162,8 @@ thrashr888-agent-kit/
 │   ├── rust-best-practices/  # Rust coding guidelines
 │   ├── python-uv/            # Python/uv development
 │   ├── hcp-terraform/        # Terraform Cloud workflow
-│   └── homebrew-tap/         # Homebrew distribution
+│   ├── homebrew-tap/         # Homebrew distribution
+│   └── presentation-redesign/ # Executive presentation redesign workflow
 ├── CLAUDE.md
 ├── AGENTS.md
 └── README.md
