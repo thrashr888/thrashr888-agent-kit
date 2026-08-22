@@ -237,6 +237,54 @@
         "hig",
         "tauri"
       ]
+    },
+    {
+      "name": "presentation-redesign",
+      "source": "./skills/presentation-redesign",
+      "description": "Rebuild dense strategy decks for live presentation with readable type and a clear executive narrative",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": [
+        "presentations",
+        "powerpoint",
+        "storytelling",
+        "visual-design",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "agent-ready-engineering",
+      "source": "./skills/agent-ready-engineering",
+      "description": "Make codebases ready for reliable human and agent work",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": [
+        "developer-experience",
+        "agents",
+        "testing",
+        "code-review",
+        "tooling"
+      ]
+    },
+    {
+      "name": "research-plan-implement",
+      "source": "./skills/research-plan-implement",
+      "description": "Research, plan, implement, and verify complex agent work",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": [
+        "agents",
+        "planning",
+        "verification",
+        "context-engineering",
+        "workflow"
+      ]
     }
   ]
 }
