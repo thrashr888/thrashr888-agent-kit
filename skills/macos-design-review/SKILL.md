@@ -16,6 +16,11 @@ The formula — Apple's HIG behavioral principles in one line:
 > **The system is law, the menu is the index, the keyboard is complete,
 > undo beats confirm, objects are direct, state survives.**
 
+Each clause distills specific Human Interface Guidelines pages — the
+official citations, clause by clause, are in `references/apple-sources.md`.
+Cite them when the owner asks where a rule comes from; consult them for
+edge calls the briefs don't cover.
+
 Visual style is deliberately out of scope: a repo's own DESIGN.md owns
 look-and-feel. This skill audits *behavior* — the part that makes an app
 feel native regardless of its visual language.
