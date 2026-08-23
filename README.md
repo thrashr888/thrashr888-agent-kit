@@ -37,7 +37,7 @@ Add to your project's `.claude/settings.local.json`:
 }
 ```
 
-## Skills (17 total)
+## Skills (19 total)
 
 ### Development
 
@@ -69,7 +69,9 @@ Add to your project's `.claude/settings.local.json`:
 |-------|-------------|
 | **shipping-tauri-apps** | Build, sign, notarize, release Tauri 2 apps on macOS; dev-loop gotchas |
 | **driving-tauri-apps** | Automate running Tauri apps with tauri-browser (testing, screenshots, demos) |
+| **debugging-tauri-apps** | Find why a Tauri app crashed or failed silently, and build the capture so next time it doesn't |
 | **building-local-ai-apps** | Local-AI app design: providers, RAG, citation UX, streaming, demo corpora |
+| **macos-design-review** | Audit a macOS app against the six-clause Mac formula, then fix and triage |
 
 ### Infrastructure
 
@@ -161,7 +163,7 @@ Common Makefile patterns for automation.
 thrashr888-agent-kit/
 ├── .claude-plugin/
 │   ├── plugin.json           # Plugin configuration
-│   └── marketplace.json      # Marketplace catalog (17 plugins)
+│   └── marketplace.json      # Marketplace catalog (19 plugins)
 ├── skills/
 │   ├── style-docs/           # Documentation templates
 │   ├── github-releases/      # Release workflows

@@ -178,7 +178,7 @@
     {
       "name": "driving-tauri-apps",
       "source": "./skills/driving-tauri-apps",
-      "description": "Automate and verify running Tauri apps with tauri-browser \u2014 snapshots, React-safe fills, screenshots, direct command invokes, demo seeding",
+      "description": "Automate and verify running Tauri apps with tauri-browser — snapshots, React-safe fills, screenshots, direct command invokes, demo seeding",
       "version": "0.1.0",
       "author": {
         "name": "Paul Thrasher"
@@ -192,9 +192,25 @@
       ]
     },
     {
+      "name": "debugging-tauri-apps",
+      "source": "./skills/debugging-tauri-apps",
+      "description": "Find why a Tauri app crashed, froze, or failed silently — crash reports, the unified log, debug-bridge history — and build the capture so next time there is something to read",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": [
+        "tauri",
+        "debugging",
+        "crashes",
+        "logging",
+        "macos"
+      ]
+    },
+    {
       "name": "building-local-ai-apps",
       "source": "./skills/building-local-ai-apps",
-      "description": "Design patterns for local-first AI apps \u2014 provider abstraction, RAG retrieval and ingestion hygiene, citation UX, streaming, scoped cancellation, demo-corpus design",
+      "description": "Design patterns for local-first AI apps — provider abstraction, RAG retrieval and ingestion hygiene, citation UX, streaming, scoped cancellation, demo-corpus design",
       "version": "0.1.0",
       "author": {
         "name": "Paul Thrasher"
