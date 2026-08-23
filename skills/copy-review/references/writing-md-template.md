@@ -51,6 +51,17 @@ exclamation points.
 - Report failures as plainly as wins.
 - Round to the precision the sample size supports.
 
+## Search (web surfaces only)
+
+SEO lives in metadata and structure, never in the voice. The query
+vocabulary for this product: [3–6 phrases a searcher actually types].
+Each appears at least once in prose that would survive review anyway.
+Every page carries: a title tag (name + category phrase, <60 chars), a
+~155-char meta description in the body register, a canonical URL, OG
+tags with image + alt, and JSON-LD typed for the thing — claims rules
+apply inside it. Competitors by factual mention only; superlatives
+stay banned.
+
 ## The tell check
 
 Before publishing, run `[tell-check command]` and scan for:

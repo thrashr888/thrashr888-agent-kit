@@ -31,6 +31,9 @@ entities). Read it against the tell list:
    comparatives ("best citations tested")
 8. **Encoding artifacts** — `â` or `Ã` in rendered text means a byte-level
    edit double-encoded a UTF-8 file; fix the encoding, never the strings
+9. **Search surface** (web pages only) — missing canonical, meta
+   description, or structured data; a page that never says the phrases a
+   searcher would type for it (see `references/seo.md`)
 
 Report findings ranked by how loudly they read machine-made, and say which
 sections are already clean. Stop there. The owner decides what changes.
@@ -61,6 +64,9 @@ as the skeleton. It must contain:
   words
 - Claims rules: numbers only when measured, baselines named, failures
   reported as plainly as wins
+- For web surfaces: an SEO section — the named query vocabulary, the
+  metadata checklist, and the rule that SEO lives in metadata and
+  structure, never in the voice (see `references/seo.md`)
 - The tell check from Stage 1, as a pre-publish checklist
 
 Reference it from the repo's agent instructions (CLAUDE.md / AGENTS.md) so
