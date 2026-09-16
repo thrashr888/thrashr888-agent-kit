@@ -2,7 +2,7 @@
   "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "thrashr888-agent-kit",
   "description": "Development workflows, release automation, and best practices for Rust, Python, Next.js, and Swift projects",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "owner": {
     "name": "Paul Thrasher",
     "email": "paul@thrasher.dev"
@@ -300,6 +300,36 @@
         "verification",
         "context-engineering",
         "workflow"
+      ]
+    },
+    {
+      "name": "verify-running-app",
+      "source": "./skills/verify-running-app",
+      "description": "Verify the running app, build provenance, checkout, and data store before live QA",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": [
+        "testing",
+        "macos",
+        "verification",
+        "worktrees"
+      ]
+    },
+    {
+      "name": "handoff-work",
+      "source": "./skills/handoff-work",
+      "description": "Prepare and resume concise work handoffs with verified state, constraints, blockers, and next actions",
+      "version": "0.1.0",
+      "author": {
+        "name": "Paul Thrasher"
+      },
+      "tags": [
+        "agents",
+        "handoff",
+        "workflow",
+        "verification"
       ]
     }
   ]

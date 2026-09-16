@@ -25,6 +25,8 @@ claude plugin install homebrew-tap@thrashr888-agent-kit
 claude plugin install presentation-redesign@thrashr888-agent-kit
 claude plugin install agent-ready-engineering@thrashr888-agent-kit
 claude plugin install research-plan-implement@thrashr888-agent-kit
+claude plugin install verify-running-app@thrashr888-agent-kit
+claude plugin install handoff-work@thrashr888-agent-kit
 ```
 
 ### Option 2: Direct configuration
@@ -37,7 +39,7 @@ Add to your project's `.claude/settings.local.json`:
 }
 ```
 
-## Skills (19 total)
+## Skills (21 total)
 
 ### Development
 
@@ -71,6 +73,7 @@ Add to your project's `.claude/settings.local.json`:
 | **driving-tauri-apps** | Automate running Tauri apps with tauri-browser (testing, screenshots, demos) |
 | **debugging-tauri-apps** | Find why a Tauri app crashed or failed silently, and build the capture so next time it doesn't |
 | **building-local-ai-apps** | Local-AI app design: providers, RAG, citation UX, streaming, demo corpora |
+| **verify-running-app** | Identify the actual build, checkout, and data store before live QA |
 | **macos-design-review** | Audit a macOS app against the six-clause Mac formula, then fix and triage |
 
 ### Infrastructure
@@ -92,8 +95,28 @@ Add to your project's `.claude/settings.local.json`:
 |-------|-------------|
 | **agent-ready-engineering** | Make codebases ready for reliable human and agent work |
 | **research-plan-implement** | Run complex agent work through research, plans, and proof |
+| **handoff-work** | Carry verified state, constraints, blockers, and next actions between agents or sessions |
 
 ## Skill Details
+
+### verify-running-app
+
+Identify the process, executable, checkout, build provenance, and relevant data
+store before testing a live app. Covers installed releases, multiple worktrees,
+and separate native/frontend development servers. Reports unknown provenance
+instead of assuming that the current checkout matches the running binary.
+
+**Use when:** “Test this fix in the app,” “Which build is running?” or “Make sure
+we are testing the right worktree.”
+
+### handoff-work
+
+Prepare a compact handoff grounded in the current checkout, changes, validation,
+remote delivery state, blockers, and next action. When resuming, recheck state
+that may have changed and preserve other workers' edits.
+
+**Use when:** “Hand this off to another agent,” “Leave a handoff for tomorrow,”
+or “Continue from this handoff.”
 
 ### copy-review
 
@@ -163,7 +186,7 @@ Common Makefile patterns for automation.
 thrashr888-agent-kit/
 ├── .claude-plugin/
 │   ├── plugin.json           # Plugin configuration
-│   └── marketplace.json      # Marketplace catalog (19 plugins)
+│   └── marketplace.json      # Marketplace catalog (21 plugins)
 ├── skills/
 │   ├── style-docs/           # Documentation templates
 │   ├── github-releases/      # Release workflows
@@ -177,7 +200,9 @@ thrashr888-agent-kit/
 │   ├── homebrew-tap/         # Homebrew distribution
 │   ├── presentation-redesign/ # Executive presentation redesign workflow
 │   ├── agent-ready-engineering/ # Agent-ready DX foundations
-│   └── research-plan-implement/ # Research-to-proof delivery workflow
+│   ├── research-plan-implement/ # Research-to-proof delivery workflow
+│   ├── verify-running-app/    # Runtime identity and live QA
+│   └── handoff-work/          # Verified state across agents and sessions
 ├── tests/                       # Skill catalog regression tests
 ├── CLAUDE.md
 ├── AGENTS.md
