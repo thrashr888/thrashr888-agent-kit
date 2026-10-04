@@ -38,7 +38,7 @@ handoff into a release checklist:
 | --- | --- |
 | Implemented | Relevant diff or commit and remaining scope. |
 | Tested | Checks actually run, result, and revision or build covered. |
-| Shipped | Verified merge, release, or deployment artifact, stating which milestone was reached. |
+| Shipped | Verified published release or deployment artifact and availability. A merge alone is not evidence of shipping. |
 | Inspected live | Actor (agent or user), actual app/build, interaction, observed result, and visual evidence when relevant. |
 
 These claims are independent. A shipped build may lack live inspection, and a
