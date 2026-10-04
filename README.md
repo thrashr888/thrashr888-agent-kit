@@ -74,7 +74,7 @@ Add to your project's `.claude/settings.local.json`:
 | **debugging-tauri-apps** | Find why a Tauri app crashed or failed silently, and build the capture so next time it doesn't |
 | **building-local-ai-apps** | Local-AI app design: providers, RAG, citation UX, streaming, demo corpora |
 | **verify-running-app** | Identify the actual build, checkout, and data store before live QA |
-| **macos-design-review** | Audit a macOS app against the six-clause Mac formula, then fix and triage |
+| **macos-design-review** | Audit native Mac behavior, with scoped live page QA when requested, then fix and triage |
 
 ### Infrastructure
 
@@ -95,7 +95,7 @@ Add to your project's `.claude/settings.local.json`:
 |-------|-------------|
 | **agent-ready-engineering** | Make codebases ready for reliable human and agent work |
 | **research-plan-implement** | Run complex agent work through research, plans, and proof |
-| **handoff-work** | Carry verified state, constraints, blockers, and next actions between agents or sessions |
+| **handoff-work** | Carry verified state, including test, shipping, and live-inspection evidence, between agents or sessions |
 
 ## Skill Details
 

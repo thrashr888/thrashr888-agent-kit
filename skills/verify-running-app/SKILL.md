@@ -85,3 +85,23 @@ Keep the final record short, for example:
 
 Use real observations in the record. Distinguish confirmed identity, inferred
 identity, and unknown provenance; do not turn missing evidence into a pass.
+
+## Example: a missing description in a desktop list
+
+This is an illustrative sequence, not a completed test:
+
+1. Identify the window's owning process, its build provenance, and an isolated
+   QA profile. If the frontend is served separately, identify that checkout too.
+2. Add an item with a distinctive synthetic description through the visible
+   editor. Save, return to the list, and inspect the surface where the product
+   promises to show that description.
+3. Reopen the item. If the description persisted but the list omits it, record
+   the presentation defect separately from persistence. Capture the actual
+   list and detail views with the build identity.
+4. After the fix and rebuild, recheck runtime identity and repeat those steps.
+   Test relevant wrapping at a supported narrow window size. Report the
+   observed UI result and persistence result separately.
+
+If only a development build was exercised, leave the installed release
+unverified. If the user still reports the defect, first compare their build,
+profile, and reproduction with the tested target before declaring it resolved.

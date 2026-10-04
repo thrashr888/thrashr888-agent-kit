@@ -21,9 +21,12 @@ official citations, clause by clause, are in `references/apple-sources.md`.
 Cite them when the owner asks where a rule comes from; consult them for
 edge calls the briefs don't cover.
 
-Visual style is deliberately out of scope: a repo's own DESIGN.md owns
-look-and-feel. This skill audits *behavior* — the part that makes an app
-feel native regardless of its visual language.
+The repo's own DESIGN.md owns look-and-feel. The core audit covers *behavior*
+— the part that makes an app feel native regardless of its visual language.
+When the requested review also includes page presentation or release QA, use
+the scoped [live page review](references/live-page-review.md) alongside the
+behavior audit. It checks the existing design in use; it does not invent a
+new visual direction or expand a focused fix into a full-app redesign.
 
 ## Stage 1 — Anchor the formula in the repo
 
@@ -98,6 +101,10 @@ For the fix-now tier:
   reporting a keyboard/menu/focus bug as confirmed — and after fixing it —
   verify live (for Tauri apps, the driving-tauri-apps skill). Say plainly
   which findings were verified live and which are still static inferences.
+- Tie live results to the actual app build and data profile (use
+  `verify-running-app` when available). For a page-level QA request, repeat
+  the affected interaction and inspect its resulting screen after the fix;
+  passing automated checks alone do not resolve a reported visual defect.
 - Run the repo's full quality gates before handing back.
 
 Webview-specific traps that recur in these fixes:

@@ -31,6 +31,26 @@ separate: tested locally, committed, pushed, CI passed, merged, and published
 are different claims. Tie test results to the revision or working tree they
 actually covered; later edits can invalidate earlier results.
 
+For product changes, distinguish the following evidence without turning every
+handoff into a release checklist:
+
+| Claim | Evidence to carry |
+| --- | --- |
+| Implemented | Relevant diff or commit and remaining scope. |
+| Tested | Checks actually run, result, and revision or build covered. |
+| Shipped | Verified merge, release, or deployment artifact, stating which milestone was reached. |
+| Inspected live | Actor (agent or user), actual app/build, interaction, observed result, and visual evidence when relevant. |
+
+These claims are independent. A shipped build may lack live inspection, and a
+user may have inspected an older build. Never attribute an agent's screenshot
+review to the user. Preserve unresolved user feedback even when automated
+checks pass, and state what reproduction or inspection remains.
+
+For example: "Implemented in <commit>; targeted checks passed on that revision;
+not released. Agent verified Save and reopen in <build>; screenshot <reference>.
+User inspection pending." Replace placeholders with evidence and omit claims
+that are irrelevant to the task.
+
 Include the following only to the depth needed to resume:
 
 1. **Objective and scope:** requested outcome, remaining deliverable, accepted
